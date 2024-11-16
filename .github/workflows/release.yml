@@ -25,7 +25,7 @@ jobs:
       - name: Run compile-metadata.py
         run: python compile-metadata.py
 
-      # Step 4: Upload store-metadata.json as an artifact
+      # Step 4: Upload the JSON file directly
       - name: Upload Metadata as Artifact
         if: success()
         uses: actions/upload-artifact@v3
@@ -38,6 +38,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "store-metadata.json"
-          tag: v1.0.0-${{ github.run_number }}
           name: Release ${{ github.run_number }}
           generate_release_notes: true
