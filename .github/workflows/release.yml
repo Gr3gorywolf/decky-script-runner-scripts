@@ -55,7 +55,7 @@ jobs:
         git tag ${{ env.new_tag }}
         git push origin ${{ env.new_tag }}
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN}}
 
     # Step 7: Create GitHub Release
     - name: Create GitHub Release
@@ -64,7 +64,7 @@ jobs:
         tag_name: ${{ env.new_tag }}
         files: store-metadata.json
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN}}
 
     # Step 8: Upload store-metadata.json as an artifact
     - name: Upload Metadata as Artifact
