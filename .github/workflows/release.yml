@@ -25,18 +25,10 @@ jobs:
       - name: Run compile-metadata.py
         run: python compile-metadata.py
 
-      # Step 4: Upload the JSON file directly
-      - name: Upload Metadata as Artifact
-        if: success()
-        uses: actions/upload-artifact@v3
-        with:
-          name: store-metadata
-          path: store-metadata.json
-
-      # Step 5: Create a GitHub release without a pre-existing tag
+      # Step 4: Create a GitHub release and attach the JSON file
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "store-metadata.json"
+          files: "store-metadata.json" # Attach the JSON file
           name: Release ${{ github.run_number }}
           generate_release_notes: true
