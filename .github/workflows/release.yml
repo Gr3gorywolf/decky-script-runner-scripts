@@ -31,16 +31,42 @@ jobs:
     - name: Run compile-metadata.py
       run: python compile-metadata.py
 
-    # Step 5: Create release using softprops/action-gh-release
+    # Step 5: Get the latest tag and increment version
+    - name: Determine new version tag
+      id: new_version
+      run: |
+        # Fetch all tags
+        git fetch --tags
+        
+        # Get the latest tag
+        latest_tag=$(git describe --tags --abbrev=0 || echo "v0.0.0")
+        
+        # Split the version (vX.Y.Z) and increment the patch version
+        IFS='.' read -r major minor patch <<<"${latest_tag#v}"
+        new_tag="v$major.$minor.$((patch + 1))"
+
+        # Output the new tag
+        echo "new_tag=$new_tag" >> $GITHUB_ENV
+        echo "::set-output name=tag::$new_tag"
+
+    # Step 6: Create a new tag
+    - name: Create and push new tag
+      run: |
+        git tag ${{ env.new_tag }}
+        git push origin ${{ env.new_tag }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # Step 7: Create GitHub Release
     - name: Create GitHub Release
-      id: create_release
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: ${{ env.new_tag }}
         files: store-metadata.json
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    # Step 6: Upload store-metadata.json as an artifact
+    # Step 8: Upload store-metadata.json as an artifact
     - name: Upload Metadata as Artifact
       if: success()
       uses: actions/upload-artifact@v3
