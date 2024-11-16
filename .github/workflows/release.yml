@@ -38,5 +38,6 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "store-metadata.json"
+          tag: v1.0.0-${{ github.run_number }}
           name: Release ${{ github.run_number }}
           generate_release_notes: true
