@@ -20,12 +20,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.x"
-      # Step 4: Run the Python script
+
+      # Step 3: Run the Python script
       - name: Run compile-metadata.py
         run: python compile-metadata.py
 
-
-      # Step 8: Upload store-metadata.json as an artifact
+      # Step 4: Upload store-metadata.json as an artifact
       - name: Upload Metadata as Artifact
         if: success()
         uses: actions/upload-artifact@v3
@@ -33,7 +33,10 @@ jobs:
           name: store-metadata
           path: store-metadata.json
 
-      - uses: ncipollo/release-action@v1
+      # Step 5: Create a GitHub release without a pre-existing tag
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
         with:
           artifacts: "store-metadata.json"
-          tag: v1.0.0-${{ github.run_number }}
+          name: Release ${{ github.run_number }}
+          generate_release_notes: true
