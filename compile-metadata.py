@@ -76,7 +76,6 @@ def compile_metadata():
             # Parse metadata and add mtime if the file has been modified
             metadata = parse_metadata(file_path)
             metadata["name"] = file_name
-            metadata["mtime"] = mtime
             metadata_list.append(metadata)
         # Save the updated metadata list
         with open(METADATA_FILE, 'w') as f:
