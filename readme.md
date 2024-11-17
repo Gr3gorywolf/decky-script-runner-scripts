@@ -42,7 +42,7 @@ Every script should include the following metadata comment block at the very top
 - **version**: The version of the script in `x.y.z` format (increment when making updates).
 - **root**: Boolean (`true` or `false`), indicating whether the script requires root permissions.
 
-Note: Every field value should be on 1 line, if exeed it can misformat the metadata
+#### **Note:** Every field value should be on 1 line, if exeed it can misformat the metadata
 ---
 
 ## Contribution Guidelines
