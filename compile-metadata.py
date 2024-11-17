@@ -35,7 +35,7 @@ def parse_metadata(file_path):
     metadata.setdefault("title", file_title)  # Humanized file name
     metadata.setdefault("description", "")
     metadata.setdefault("image", "")
-    metadata.setdefault("author", file_path.split("\\")[1])
+    metadata.setdefault("author", file_path.split("/")[1])
     metadata.setdefault("version", "0.0.0")
     metadata.setdefault("root", False)
     metadata.setdefault("language", file_extension)  # File extension as language
