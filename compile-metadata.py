@@ -33,12 +33,14 @@ def parse_metadata(file_path):
 
     # Set default values for missing metadata fields
     metadata.setdefault("title", file_title)  # Humanized file name
-    metadata.setdefault("language", file_extension)  # File extension as language
-    metadata.setdefault("version", "0.0.0")
-    metadata.setdefault("author", "unknown")
-    metadata.setdefault("root", False)
     metadata.setdefault("description", "")
     metadata.setdefault("image", "")
+    metadata.setdefault("author", file_path.split("\\")[1])
+    metadata.setdefault("version", "0.0.0")
+    metadata.setdefault("root", False)
+    metadata.setdefault("language", file_extension)  # File extension as language
+    metadata['download-url'] = "https://raw.githubusercontent.com/Gr3gorywolf/decky-script-runner-scripts/refs/heads/main/scripts" + file_path.split("scripts")[1].replace("\\", "/")
+
     return metadata
 
 def compile_metadata():
@@ -57,31 +59,33 @@ def compile_metadata():
         existing_metadata = {}
 
     metadata_list = []
-    for file_name in os.listdir(SCRIPTS_DIR):
-        file_path = os.path.join(SCRIPTS_DIR, file_name)
-        if [file_name.endswith(ext) for ext in suported_script_langs].count(True) == 0:
-            continue
-        if file_name.endswith('.json') or not os.path.isfile(file_path):
-            continue
+    for author_folder in os.listdir(SCRIPTS_DIR):
+        for file_name in os.listdir(os.path.join(SCRIPTS_DIR,author_folder)):
+            file_path = os.path.join(SCRIPTS_DIR,author_folder,file_name)
+            if [file_name.endswith(ext) for ext in suported_script_langs].count(True) == 0:
+                continue
+            if file_name.endswith('.json') or not os.path.isfile(file_path):
+                continue
 
-        # Get the last modification time of the file
-        mtime = os.path.getmtime(file_path)
+            # Get the last modification time of the file
+            mtime = os.path.getmtime(file_path)
 
-        # Check if we need to reparse metadata based on mtime
-        if (file_name in existing_metadata and
-            existing_metadata[file_name].get("mtime") == mtime):
-            # Use existing metadata entry if mtime matches
-            metadata_list.append(existing_metadata[file_name])
-        else:
-            # Parse metadata and add mtime if the file has been modified
-            metadata = parse_metadata(file_path)
-            metadata["name"] = file_name
-            metadata_list.append(metadata)
-        # Save the updated metadata list
-        with open(METADATA_FILE, 'w') as f:
-            json.dump(metadata_list, f, indent=4)
+            # Check if we need to reparse metadata based on mtime
+            if (file_name in existing_metadata and
+                existing_metadata[file_name].get("mtime") == mtime):
+                # Use existing metadata entry if mtime matches
+                metadata_list.append(existing_metadata[file_name])
+            else:
+                # Parse metadata and add mtime if the file has been modified
+                metadata = parse_metadata(file_path)
+                metadata["name"] = file_name
+                metadata_list.append(metadata)
+            # Save the updated metadata list
+            with open(METADATA_FILE, 'w') as f:
+                json.dump(metadata_list, f, indent=4)
     return metadata_list
 
 
 print("Compiling metadata...")
 compile_metadata()
+print("Metadata compiled successfully.")
