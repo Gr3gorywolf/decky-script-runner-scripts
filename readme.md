@@ -1,4 +1,25 @@
-# Decky Script Runner - Scripts Repository
+# Decky Script Runner community scrips
+
+<div style="background-color: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px; padding: 16px; font-family: Arial, sans-serif; color: #856404;margin-bottom:12px">
+    <div style="display: flex; align-items: center; margin-bottom: 4px; font-weight: bold; font-size: 16px;">
+        <span>Warning</span>
+    </div>
+    <ol style="margin: 0; padding-left: 20px; color: #856404;">
+        <li style="margin-bottom: 2px;">
+            Some scripts require root and unlock the Steam Deck filesystem. In those cases, we are not responsible for Steam Deck damages. (Verify the code before running them)
+        </li>
+        <li style="margin-bottom: 2px;">
+            Decky is not responsible for anything done by the script runner since the plugin was made just for running scripts. Any script that you run will be at your own risk.
+        </li>
+        <li>
+            We are not responsible for any damages done by a script run on this plugin.
+        </li>
+    </ol>
+</div>
+
+The community scripts are scripts made by the community to facilitate certain automatizations. These scripts can be downloaded from the GitHub repo and installed by the sideloader.
+
+These scripts provide various functionalities and enhancements for your Steam Deck, allowing you to customize and optimize your gaming experience. However, it's crucial to exercise caution and understand the implications of running third-party scripts on your device.
 
 This repository hosts scripts designed for use with the **Decky Plugin Loader**'s **Script Runner Plugin**. Contributions are welcome and encouraged! Below you'll find information on how to structure your scripts and submit them for inclusion in the repository.
 
@@ -6,13 +27,14 @@ This repository hosts scripts designed for use with the **Decky Plugin Loader**'
 
 ## Repository Structure
 
-Each script must be placed inside the `scripts/` directory and organized into folders named after the author. For example:  
+Each script must be placed inside the `scripts/` directory and organized into folders named after the author. For example:
 
 ```
 scripts/{author-name}/{script-name}.py
 ```
 
 **Example:**
+
 ```
 scripts/Gr3gorywolf/install-node-packages.py
 ```
@@ -21,20 +43,21 @@ scripts/Gr3gorywolf/install-node-packages.py
 
 ## Script Metadata
 
-Every script should include the following metadata comment block at the very top of the file. This metadata is automatically generated when creating or editing a new script using the Decky Script Runner plugin or its sideloader.  
+Every script should include the following metadata comment block at the very top of the file. This metadata is automatically generated when creating or editing a new script using the Decky Script Runner plugin or its sideloader.
 
-```python
-# ----------metadata---------
-# title: Install Common Nodejs Packages
-# description: [Requires node] Install common nodejs packages such as expressjs, node-fetch, joi, socket.io, lodash, cheerio, and axios.
-# image:
-# author: Gr3gorywolf
-# version: 1.0.0
-# root: false
-# ----------metadata---------
+```
+----------metadata---------
+title: Install Common Nodejs Packages
+description: [Requires node] Install common nodejs packages such as expressjs, node-fetch, joi, socket.io, lodash, cheerio, and axios.
+image:
+author: Gr3gorywolf
+version: 1.0.0
+root: false
+----------metadata---------
 ```
 
 ### Metadata Fields
+
 - **title**: A short, descriptive name for the script.
 - **description**: A detailed explanation of what the script does and any requirements.
 - **image**: A URL to an image/icon representing the script (optional).
@@ -43,28 +66,28 @@ Every script should include the following metadata comment block at the very top
 - **root**: Boolean (`true` or `false`), indicating whether the script requires root permissions.
 
 #### **Note:** Every field value should be on 1 line, if exeed it can misformat the metadata
+
 ---
 
 ## Contribution Guidelines
 
 ### Submitting a New Script
 
-1. **Clone the Repository:**  
+1. **Clone the Repository:**
+
    ```bash
    git clone https://github.com/{your-username}/decky-script-runner-scripts.git
    cd decky-script-runner-scripts
    ```
 
 2. **Create Your Script:**  
-   Add your script to the appropriate folder structure inside the `scripts/` directory.  
+   Add your script to the appropriate folder structure inside the `scripts/` directory.
 
 3. **Add Metadata:**  
    Ensure your script has the correct metadata block at the top of the file.
 
 4. **Push Changes:**  
-   Create a pull request targeting the `main` branch of the repository.  
-
-   Once your pull request is merged, the script will automatically appear in the store for users of the Decky Script Runner.
+   Create a pull request targeting the `main` branch of the repository.
 
 ---
 
