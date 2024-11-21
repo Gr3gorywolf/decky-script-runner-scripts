@@ -2,9 +2,7 @@
 
 > ⚠️ **Warning**  
 > 1. Some scripts require root and unlock the Steam Deck filesystem. In those cases, we are not responsible for Steam Deck damages. (Verify the code before running them)  
-> 2. Decky is not responsible for anything done by the script runner since the plugin was made just for running scripts. Any script that you run will be at your own risk.  
-> 3. We are not responsible for any damages done by a script ran on this plugin.
-
+> 2. Neither the Plugin or Developer are responsible for anything done by the script runner since the plugin was made just for running scripts. Any script that you run will be at your own risk. 
 
 The community scripts are scripts made by the community to facilitate certain automatizations. These scripts can be downloaded from the GitHub repo and installed by the sideloader.
 
