@@ -1,21 +1,10 @@
 # Decky Script Runner community scrips
 
-<div style="background-color: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px; padding: 16px; font-family: Arial, sans-serif; color: #856404;margin-bottom:12px">
-    <div style="display: flex; align-items: center; margin-bottom: 4px; font-weight: bold; font-size: 16px;">
-        <span>Warning</span>
-    </div>
-    <ol style="margin: 0; padding-left: 20px; color: #856404;">
-        <li style="margin-bottom: 2px;">
-            Some scripts require root and unlock the Steam Deck filesystem. In those cases, we are not responsible for Steam Deck damages. (Verify the code before running them)
-        </li>
-        <li style="margin-bottom: 2px;">
-            Decky is not responsible for anything done by the script runner since the plugin was made just for running scripts. Any script that you run will be at your own risk.
-        </li>
-        <li>
-            We are not responsible for any damages done by a script run on this plugin.
-        </li>
-    </ol>
-</div>
+> ⚠️ **Warning**  
+> 1. Some scripts require root and unlock the Steam Deck filesystem. In those cases, we are not responsible for Steam Deck damages. (Verify the code before running them)  
+> 2. Decky is not responsible for anything done by the script runner since the plugin was made just for running scripts. Any script that you run will be at your own risk.  
+> 3. We are not responsible for any damages done by a script run on this plugin.
+
 
 The community scripts are scripts made by the community to facilitate certain automatizations. These scripts can be downloaded from the GitHub repo and installed by the sideloader.
 
